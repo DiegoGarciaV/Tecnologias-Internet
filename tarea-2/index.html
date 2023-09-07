@@ -7,7 +7,7 @@
 </head>
 <body>
     <header>
-        <nav>
+        <nav aria-label="Navegador del sitio">
             <h2 class="nav-title">La Historia de la Web</h2>
             <ul>
                 <li class="nav-list"><a href="">HTML</a></li>
@@ -111,13 +111,162 @@
 
             <p>
                 A continuación se dará una descripción de algunas de las etiquetas mas relevantes, asi como su funcionalidad 
-                y ejemplos de casos de uso. Se harán notar buenas prácticas aplicables a cada etiqueta asi como sus atributos.
+                y ejemplos de casos de uso. Se harán notar buenas prácticas aplicables a cada etiqueta asi como sus atributos mas comumente utilizados.
+            </p>
+            <table aria-describedby="Tabla de significados">
+                <thead>
+                    <tr>
+                        <th>Tag</th>
+                        <th>Atributos</th>
+                        <th>Descripción</th>
+                        <th>Ejemplo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>&lt;h1&gt;,&lt;h2&gt;...&lt;h6&gt;</td>
+                        <td>
+                            <ul>
+                                <li>class</li>
+                                <li>id</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <p>Etiquetas para enmarcar títulos</p>
+                        </td>
+                        <td>
+                            <h2>Este es un título h2</h2>
+                            <h3>Este es un título h3</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&lt;p&gt;</td>
+                        <td>
+                            <ul>
+                                <li>class</li>
+                                <li>id</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <p>Etiqueta para enmarcar parrafos</p>
+                        </td>
+                        <td>
+                            <p>Esto es un parrafo, puede contener mucho o poco texto, depende del contenido del sitio.</p>
+                            <p>Este es un parrafo mas corto.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&lt;a&gt;</td>
+                        <td>
+                            <ul>
+                                <li>href: Url de redirección</li>
+                                <li>target: Especifica dónde se abrirá el enlace (Otra pestaña, ventana, o iframe)</li>
+                                <li>class</li>
+                                <li>id</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <p>Etiqueta para abrir hipervinculos</p>
+                        </td>
+                        <td>
+                            <p>Al dar click <strong><a href="css.html">aquí</a></strong> serás redirigido a la pagina descriptiva de CSS</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&lt;nav&gt;</td>
+                        <td>
+                            <ul>
+                                <li>class</li>
+                                <li>id</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <p>Etiqueta para enmarcar un bloque con opciones de navegación dentro del sitio</p>
+                        </td>
+                        <td>
+                            <nav aria-label="Ejemplo de caso de uso del tag nav">
+                                <h2 class="nav-title">La Historia de la Web</h2>
+                                <ul>
+                                    <li class="nav-list"><a href="">HTML</a></li>
+                                    <li class="nav-list"><a href="css.html">CSS</a></li>
+                                    <li class="nav-list"><a href="js.html">JavaScript</a></li>
+                                </ul>
+                            </nav>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>&lt;header&gt;</td>
+                        <td>
+                            <ul>
+                                <li>class</li>
+                                <li>id</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <p>Etiqueta agrupar el encabezado del sitio</p>
+                        </td>
+                        <td>
+                            <header>
+                                <h2>Texto titular</h2>
+                                <nav aria-label="Ejemplo de nav en encabezado">
+                                    <h2 class="nav-title">La Historia de la Web</h2>
+                                    <ul>
+                                        <li class="nav-list"><a href="">HTML</a></li>
+                                        <li class="nav-list"><a href="css.html">CSS</a></li>
+                                        <li class="nav-list"><a href="js.html">JavaScript</a></li>
+                                    </ul>
+                                </nav>
+                            </header>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>&lt;body&gt;</td>
+                        <td>
+                            
+                        </td>
+                        <td>Esta etiqueta engloba todo el contenido visible de una página web</td>
+                        <td>
+                            <p></p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>&lt;section&gt;</td>
+                        <td>
+                            <ul>
+                                <li>class</li>
+                                <li>id</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <p>
+                                Esta etiqueta enmarca una sección con contenido único en una página web, es decir,
+                                el contenido en contraste con otro elemento &lt;section&gt; es completamente independiente.
+                            </p>
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="container-section" id="close-section">
+            <h2>Conclusiones</h2>
+            <p>
+                HTML es un lenguaje de enmarcado que nos proporciona una manera eficaz de darle cuerpo y estructura
+                a un documento de texto plano, convirtiendolo en un documento con mucha mas imformación que solo 
+                el contenido del mismo. La estructuración de un documento de texto sera de mayor utilidad cuando se 
+                traten estilos (CSS).
             </p>
         </section>
     </main>
 
     <footer>
-
+        
     </footer>
 </body>
 </html>
