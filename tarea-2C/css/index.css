@@ -30,26 +30,27 @@ section.container-section
 {
     padding: 1rem 0px;
     text-align: justify;
+    overflow-x:hidden;
+    overflow-y: auto;
 }
 
 .floating-left
 {
     float: left;
-    margin: 0rem 3rem;
+    margin: 0rem 1rem;
 }
 
 .floating-right
 {
     float: right;
-    margin: 0rem 3rem;
+    margin: 0rem 1rem;
 }
 
 .img-container
 {
-    padding: 1rem;
-    background-color:rgb(196, 219, 252);
     border-radius: 1rem;
-    margin: 1rem auto;
+    margin: 0px 1.5rem !important;
+    max-width: 300px;
 }
 
 .img-container img
@@ -57,9 +58,16 @@ section.container-section
     width: 100%;
 }
 
-#robot-icon
+#robot-icon,
+#programing-icon
 {
     width: 30vw;
+}
+
+
+#electronic-icon
+{
+    width: 20vw;
 }
 
 a
