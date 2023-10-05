@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>The Fresh Bowl</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/index/style.css">
+</head>
+
+<body class="bg-light">
+
+    <header>
+        <nav class="navbar fixed-top navbar-dark bg-success navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="">
+                    <div class="img-panel" id="logo-panel">
+                        <img src="imgs/logo-w.png" alt="" class="d-inline-block align-text-top">
+                    </div>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav-options"
+                    aria-controls="nav-options" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="nav-options">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100 justify-content-end">
+                        <li class="nav-item text-center">
+                            <a class="nav-link active" href="/menu">Menú</a>
+                        </li>
+                        <li class="nav-item text-center">
+                            <a class="nav-link" aria-current="page" href="/recipes">Recetas</a>
+                        </li>
+                        <li class="nav-item text-center">
+                            <a class="nav-link" href="/inventory">Inventario</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="full-container full-screen-container-static" id="cover-container">
+
+        <div class="title-container">
+            <h1 class="text-light">THE FRESH BOWL</h1>
+            <p class="text-light">FRESH BOWLS, FRESH SOULS</p>
+        </div>
+        <div class="container" id="main-options">
+            <div class="row justify-content-center text-center">
+                <div class="col col-12 col-lg-3">
+                    <p>Recetas</p>
+                </div>
+                <div class="col col-12 col-lg-3">
+                    <p>Menu</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="full-container half-screen-container-static bg-dark">
+        <div id="best-dishes" class="carousel slide h-100" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#best-dishes" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#best-dishes" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#best-dishes" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="carousel-item-content">
+
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-item-content">
+
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-item-content">
+
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#best-dishes" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#best-dishes" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+    <section id="menu-intro">
+        <div class="container-lg">
+            <div class="full-container half-screen-container">
+                <div class="row">
+                    <div class="col col-12 col-lg-4">
+                        <div class="card">
+                            <div class="card-img-panel bg-dark" >
+                                <img src="imgs/dishes/mediterranea.jpg" class=" bg-dark" alt="...">
+
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">
+                                    Some quick example text to build on the card title and make up the
+                                    bulk of the card's content.
+                                </p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-12 col-lg-4">
+                        <div class="card">
+                            <div class="card-img-panel bg-dark" >
+                                <img src="imgs/dishes/pollo-cesar.jpg" class=" bg-dark" alt="...">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">
+                                    Some quick example text to build on the card title and make up the
+                                    bulk of the card's content.
+                                </p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-12 col-lg-4">
+                        <div class="card">
+                            <div class="card-img-panel bg-dark" >
+                                <img src="imgs/dishes/caprese.jpg" class=" bg-dark" alt="...">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">
+                                    Some quick example text to build on the card title and make up the
+                                    bulk of the card's content.
+                                </p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-12 col-lg-4">
+                        <div class="card">
+                            <div class="card-img-panel bg-dark" >
+                                <img src="imgs/dishes/tropical.jpg" class=" bg-dark" alt="...">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">
+                                    Some quick example text to build on the card title and make up the
+                                    bulk of the card's content.
+                                </p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-12 col-lg-4">
+                        <div class="card">
+                            <div class="card-img-panel bg-dark" >
+                                <img src="imgs/dishes/quinoa-aguacate.jpg" class="bg-dark" alt="..." >
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">
+                                    Some quick example text to build on the card title and make up the
+                                    bulk of the card's content.
+                                </p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <footer></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

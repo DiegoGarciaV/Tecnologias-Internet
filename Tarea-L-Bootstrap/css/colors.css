@@ -1,0 +1,8 @@
+:root
+{
+    --dark-green: rgb(36, 46, 41);
+    --dark-green-75: rgba(36, 46, 41,0.75);
+    --dark-green-50: rgba(36, 46, 41,0.5);
+    --dark-green-25: rgba(36, 46, 41,0.25);
+    
+}
