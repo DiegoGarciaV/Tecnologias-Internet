@@ -25,11 +25,15 @@ body
 .full-screen-container, .full-screen-container-static
 {
     height: 100vh;
+    width: 80%;
+    margin: auto;
 }
 
 .half-screen-container, .half-screen-container-static
 {
     height: 50vh;
+    width: 80%;
+    margin: auto;
 }
 
 .carousel-inner, 
@@ -42,10 +46,9 @@ body
 {
     width: 100%;
     height: 100%;
-    background-image: url('../../imgs/logo.png');
     background-repeat: no-repeat;
     background-position: center;
-    background-size: contain;
+    background-size: 100%;
 }
 
 #cover-container
@@ -73,7 +76,7 @@ body
 {
     position: absolute;
     top: 40vh;
-    transform: translateX(calc(50vw - 50%));
+    transform: translateX(calc(40vw - 50%));
     padding: 3rem 0px;
     max-width: 90%;
 }
@@ -85,6 +88,18 @@ body
     
 }
 
+.exclusive-item-card
+{
+    position: absolute;
+    top: 5vh;
+    right: 15%;
+    height: 80%;
+    width: 20vw;
+    padding: 3rem 2rem;
+    background-color: var(--crystal-75);
+    text-align: center;
+}
+
 #main-options
 {
     color: #f8f9fa;
@@ -92,7 +107,7 @@ body
     font-weight: 200;
     position: absolute;
     bottom: 10vh;
-    transform: translateX(calc(50vw - 50%));
+    transform: translateX(calc(40vw - 50%));
     max-width: 90%;
 }
 
@@ -118,7 +133,7 @@ body
 .card-img-panel 
 {
     width: 100%; 
-    height: 15rem;
+    height: 12rem;
     position: relative;
     overflow: hidden;
   }
@@ -133,6 +148,17 @@ body
     left: 0;
 }
 
+.card-text
+{
+    text-align: justify;
+}
+
+.section-title
+{
+    font-size: 3rem;
+    text-align: center;
+    padding-bottom: 2rem;
+}
 
 @media (max-width: 990px) {
 
@@ -140,6 +166,17 @@ body
     {
         height: auto;
     }
+
+    .full-screen-container-static, .half-screen-container-static
+    {
+        width: 94%;
+    }
+
+    .title-container
+    {
+        transform: translateX(calc(47vw - 50%));
+    }
+    
 
     .title-container h1
     {
@@ -149,6 +186,12 @@ body
     .title-container p
     {
         font-size: 2rem;
+    }
+
+    #main-options
+    {
+        transform: translateX(calc(47vw - 50%));
+     
     }
 
     #menu-intro .card
