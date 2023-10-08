@@ -36,7 +36,7 @@ body
 
 .half-screen-container, .half-screen-container-static
 {
-    height: 50vh;
+    height: 60vh;
 }
 
 .carousel-inner, 
@@ -51,13 +51,24 @@ body
     height: 100%;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 100%;
+    background-size: cover;
+    /* background-size: 100%; */
+    position: relative;
 }
 
 #cover-container
 {
     background-color: var(--dark-green);
     position: relative;
+}
+
+.title-container
+{
+    position: absolute;
+    top: 40vh;
+    transform: translateX(calc(40vw - 50%));
+    padding: 3rem 0px;
+    max-width: 90%;
 }
 
 .title-container h1
@@ -75,14 +86,6 @@ body
     text-align: center;
 }
 
-.title-container
-{
-    position: absolute;
-    top: 40vh;
-    transform: translateX(calc(40vw - 50%));
-    padding: 3rem 0px;
-    max-width: 90%;
-}
 
 #cover-container .title-container
 {
@@ -95,12 +98,23 @@ body
 {
     position: absolute;
     top: 5vh;
-    right: 15%;
+    right: 10%;
     height: 80%;
-    width: 20vw;
+    width: 30%;
     padding: 3rem 2rem;
     background-color: var(--crystal-75);
     text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.exclusive-link
+{
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    font-size: 1.3rem;
 }
 
 #main-options
@@ -127,10 +141,15 @@ body
 
 }
 
+.menu-row .col
+{
+    margin-bottom: 1rem !important;
+}
+
 #menu-intro .card
 {
-    width: 90%;
-    margin: 1rem auto;
+    margin: auto;
+    min-height: 100%;
 }
 
 .card-img-panel 
@@ -163,9 +182,70 @@ body
     padding-bottom: 2rem;
 }
 
+.card-pricing{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
 .pricing-buttons
 {
-    font-family: 'Montserrat';
+    font-family: 'Montserrat', sans-serif;
+}
+
+@media (max-width: 1390px) {
+
+    .exclusive-item-card
+    {
+        
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 40%;
+    }
+
+    .title-container
+    {
+        top: 35vh;
+    }
+
+    .title-container h1
+    {
+        font-size: 5rem;
+    }
+
+    .title-container p
+    {
+        font-size: 1.75rem;
+    }
+    #main-options
+    {
+        bottom: 5vh;
+    }
+}
+
+@media (max-width: 1280px) {
+
+    .exclusive-item-card
+    {
+        width: 50%;
+    }
+
+    .title-container
+    {
+        top: 35vh;
+    }
+
+    .title-container h1
+    {
+        font-size: 5rem;
+    }
+
+    .title-container p
+    {
+        font-size: 1.75rem;
+    }
 }
 
 @media (max-width: 990px) {
@@ -183,12 +263,13 @@ body
     .title-container
     {
         transform: translateX(calc(47vw - 50%));
+        top: 40vh;
     }
     
 
     .title-container h1
     {
-        font-size: 5rem;
+        font-size: 4rem;
     }
 
     .title-container p
@@ -199,14 +280,10 @@ body
     #main-options
     {
         transform: translateX(calc(47vw - 50%));
+        font-size: 2.5rem;
      
     }
 
-    #menu-intro .card
-    {
-        width: 80%;
-        margin: 1rem auto;
-    }
 
 
 }
@@ -230,14 +307,35 @@ body
 
     #main-options
     {
-        bottom: 5vh;
-        font-size: 1.5rem;
+        bottom: 15vh;
     }
 
     #logo-panel
     {
         max-width: 65vw;
     }
+
+    .exclusive-item-card
+    {
+        position: absolute;
+        bottom: 0;
+        top: auto;
+        height: 100%;
+        width: 100%;
+        background-color: var(--crystal-75);
+    }
+
+    #best-dishes .carousel-control-next-icon,
+    #best-dishes .carousel-control-prev-icon
+    {
+        background-color: var(--dark-green);
+    }
 }
+@media (max-width: 576px) {
 
-
+    #main-options
+    {
+        bottom: 5vh;
+        font-size: 1.5rem;
+    }
+}
