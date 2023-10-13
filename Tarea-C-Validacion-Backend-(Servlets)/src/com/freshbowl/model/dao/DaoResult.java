@@ -1,16 +1,16 @@
 package com.freshbowl.model.dao;
 
-import java.sql.ResultSet;
+import java.util.List;
 
-public class DaoResult {
+public class DaoResult<T> {
     
     private boolean success;
     private String message;
     private int operatedRecords;
-    private ResultSet resultSet;
+    private List<T> resultSet;
 
     
-    public DaoResult(boolean success, String message, int operatedRecords, ResultSet resultSet) {
+    public DaoResult(boolean success, String message, int operatedRecords, List<T> resultSet) {
         this.success = success;
         this.message = message;
         this.operatedRecords = operatedRecords;
@@ -36,7 +36,7 @@ public class DaoResult {
         return operatedRecords;
     }
 
-    public ResultSet getResultSet() {
+    public List<T> getResultSet() {
         return resultSet;
     }
     

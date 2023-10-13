@@ -41,6 +41,12 @@
             </div>
         </nav>
     </header>
-    
+    <h1>Inventario</h1>
+    <c:forEach var="item" items="${requestScope.inventory}">
+    <p>Nombre del artículo: ${item.getItemName()}</p>
+    <p>Cantidad: ${item.getQuantity()}</p>
+    <p>Precio: ${item.getPrice()}</p>
+    <hr/>
+</c:forEach>
 </body>
 </html>

@@ -8,9 +8,9 @@ public interface IDao<T> {
 
     public T get(int idItem);
 
-    public DaoResult create(T newItem);
+    public DaoResult<T> create(T newItem);
 
-    public DaoResult update(T newItem);
+    public DaoResult<T> update(T newItem);
 
-    public DaoResult delete(T newItem);
+    public DaoResult<T> delete(T newItem);
 }

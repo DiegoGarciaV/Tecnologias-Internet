@@ -5,6 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.freshbowl.model.dao.mappers.IMapper;
 
 public class DataSource {
 
@@ -12,30 +16,45 @@ public class DataSource {
     private static final String USER = "root";
     private static final String PASSWORD = "1234";
 
-    public static Connection getConnection() throws SQLException 
+    private DataSource(){}
+
+    public static Connection getConnection() throws SQLException, ClassNotFoundException
     {
+        Class.forName("com.mysql.cj.jdbc.Driver");
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 
    
 
-    public static DaoResult ejecuteQuery(String sqlQuery, Object[] params)
+    public static <T> DaoResult<T> ejecuteQuery(String sqlQuery, Object[] params, IMapper<T> mapper)
     {
         PreparedStatement preparedStatement = null;
 
+        List<T> itemsList = new ArrayList<>();
         try(Connection connection = getConnection())
         {
             ResultSet resultSet = null;
             preparedStatement = connection.prepareStatement(sqlQuery);
-            for(int i = 0; i < params.length; i++)
-                preparedStatement.setObject(i + 1,params[i]);
+            if(params != null)
+            {
+                for(int i = 0; i < params.length; i++)
+                    preparedStatement.setObject(i + 1,params[i]);
+            }
 
             resultSet = preparedStatement.executeQuery();
-            return new DaoResult(true, "Consulta ejecutada con éxito", 0,resultSet);
+
+            
+            while (resultSet.next()) {
+
+                T item = mapper.map(resultSet);
+                itemsList.add(item);
+            }
+            return new DaoResult<>(true, "Consulta ejecutada con éxito", 0,itemsList);
         }
-        catch(SQLException e)
+        catch(Exception e)
         {
-            return new DaoResult(e.getMessage());
+            System.err.println(e.getMessage());
+            return new DaoResult<>(e.getMessage());
         }
         finally
         {
@@ -49,7 +68,7 @@ public class DataSource {
        
     }
 
-    public static DaoResult executeUpdate(String sqlQuery, Object[] params)
+    public static <T> DaoResult<T> executeUpdate(String sqlQuery, Object[] params)
     {
         PreparedStatement preparedStatement = null;
 
@@ -61,11 +80,11 @@ public class DataSource {
                 preparedStatement.setObject(i + 1,params[i]);
 
             operatedRecord = preparedStatement.executeUpdate();
-            return new DaoResult(true, "Consulta ejecutada con éxito", operatedRecord,null);
+            return new DaoResult<>(true, "Actualiacion ejecutada con éxito", operatedRecord,null);
         }
-        catch(SQLException e)
+        catch(Exception e)
         {
-            return new DaoResult(e.getMessage());
+            return new DaoResult<>(e.getMessage());
         }
         finally
         {

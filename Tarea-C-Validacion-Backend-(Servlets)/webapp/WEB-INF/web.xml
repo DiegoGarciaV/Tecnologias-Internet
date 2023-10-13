@@ -12,12 +12,22 @@
     <!-- Configuración de Servlet -->
     <servlet>
         <servlet-name>InventoryServlet</servlet-name>
-        <servlet-class>com.freshbowl.Inventory</servlet-class>
+        <servlet-class>com.freshbowl.servlets.Inventory</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>InventoryFormServlet</servlet-name>
+        <servlet-class>com.freshbowl.servlets.forms.InventoryForm</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>InventoryServlet</servlet-name>
         <url-pattern>/inventory</url-pattern>
+    </servlet-mapping> 
+
+    <servlet-mapping>
+        <servlet-name>InventoryFormServlet</servlet-name>
+        <url-pattern>/inventory/form</url-pattern>
     </servlet-mapping> 
 
 </web-app>
