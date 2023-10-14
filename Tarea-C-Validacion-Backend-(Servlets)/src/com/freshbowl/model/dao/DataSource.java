@@ -6,7 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.freshbowl.model.dao.mappers.IMapper;
 
@@ -24,7 +26,51 @@ public class DataSource {
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 
-   
+    public static DaoResult<Map<String,String>> getList(String sqlQuery, Object[] params)
+    {
+        PreparedStatement preparedStatement = null;
+
+        List<Map<String,String>> itemsList = new ArrayList<>();
+        try(Connection connection = getConnection())
+        {
+            ResultSet resultSet = null;
+            preparedStatement = connection.prepareStatement(sqlQuery);
+            if(params != null)
+            {
+                for(int i = 0; i < params.length; i++)
+                    preparedStatement.setObject(i + 1,params[i]);
+            }
+
+            resultSet = preparedStatement.executeQuery();
+
+            
+            while (resultSet.next()) {
+
+                String idItem = resultSet.getString(1);
+                String item = resultSet.getString(2);
+                Map<String,String> tuple = new HashMap<>();
+                tuple.put("idItem", idItem);
+                tuple.put("item", item);
+                itemsList.add(tuple);
+            }
+            return new DaoResult<>(true, "Consulta ejecutada con éxito", 0,itemsList);
+        }
+        catch(Exception e)
+        {
+            System.err.println(e.getMessage());
+            return new DaoResult<>(e.getMessage());
+        }
+        finally
+        {
+            try {
+                if(preparedStatement!= null)
+                    preparedStatement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+       
+    }
 
     public static <T> DaoResult<T> ejecuteQuery(String sqlQuery, Object[] params, IMapper<T> mapper)
     {
@@ -78,9 +124,10 @@ public class DataSource {
             preparedStatement = connection.prepareStatement(sqlQuery);
             for(int i = 0; i < params.length; i++)
                 preparedStatement.setObject(i + 1,params[i]);
+                
 
             operatedRecord = preparedStatement.executeUpdate();
-            return new DaoResult<>(true, "Actualiacion ejecutada con éxito", operatedRecord,null);
+            return new DaoResult<>(true, "Actualiacion ejecutada con éxito: " + operatedRecord + " registros", operatedRecord,null);
         }
         catch(Exception e)
         {

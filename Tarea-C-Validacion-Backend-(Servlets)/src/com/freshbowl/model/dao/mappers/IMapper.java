@@ -9,6 +9,10 @@ public interface IMapper<T> {
 
     Object[] demap(T entity);
 
+    Object[] demapKey(T entity);
+
     Object[] outputDemap(T entity);
+
+    Object[] outputDemapKey(T entity);
     
 }

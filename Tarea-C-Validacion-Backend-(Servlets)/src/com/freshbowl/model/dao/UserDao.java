@@ -28,7 +28,7 @@ public class UserDao implements IDao<User>{
         
         String sqlQuery = "INSERT INTO users(name, lastname, job) VALUES (?,?,?);";
         UsersMapper mapper = new UsersMapper();
-        return DataSource.executeUpdate(sqlQuery, mapper.outputDemap(newUser));
+        return DataSource.executeUpdate(sqlQuery, mapper.demap(newUser));
     }
 
     @Override
@@ -36,7 +36,7 @@ public class UserDao implements IDao<User>{
         
         String sqlQuery = "UPDATE users SET name = ? , lastname = ?, job = ? WHERE user_id = ?";
         UsersMapper mapper = new UsersMapper();
-        return DataSource.executeUpdate(sqlQuery, mapper.demap(newUser));
+        return DataSource.executeUpdate(sqlQuery, mapper.demapKey(newUser));
     }
 
     @Override

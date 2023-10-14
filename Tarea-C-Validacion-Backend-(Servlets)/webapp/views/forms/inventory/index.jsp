@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %> 
 <%@page import="java.util.List"%> 
 <%@page import="com.freshbowl.model.pojos.InventoryItem"%> 
+<%@page import="com.freshbowl.model.pojos.output.InventoryOut"%> 
 <!DOCTYPE html>
 <html lang="es">
 
@@ -58,10 +59,10 @@
             <div class="row menu-row">
                 
             <%
-                List<InventoryItem> inventoryList = (List<InventoryItem>) request.getAttribute("inventory");
+                List<InventoryOut> inventoryList = (List<InventoryOut>) request.getAttribute("inventory");
 
                 if (inventoryList != null) {
-                    for (InventoryItem item : inventoryList) {
+                    for (InventoryOut item : inventoryList) {
             %>
 
                 <div class="col col-12 col-xxl-3 col-lg-4 col-md-6">
@@ -75,11 +76,11 @@
                             <h5 class="card-title"><%= item.getItemName() %></h5>
                         
                             <p class="card-text">
-                                Existencia: <span class="pricing-buttons"><%= item.getQuantity() %> x [ <%= item.getUnit() %> ]</span>
+                                Existencia: <span class="pricing-buttons"><%= item.getQuantity() %> x [ <%= item.getUnitName() %> ]</span>
                             </p>
 
                             <p class="card-text">
-                                Precio actual: <span class="pricing-buttons">$ <%= item.getPrice() %> / <%= item.getUnit() %></span>
+                                Precio actual: <span class="pricing-buttons">$ <%= item.getPrice() %> / <%= item.getUnitName() %></span>
                             </p>
                             
                         </div>

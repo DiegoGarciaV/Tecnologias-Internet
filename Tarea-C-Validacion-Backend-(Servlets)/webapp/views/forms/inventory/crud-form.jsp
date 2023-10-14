@@ -56,19 +56,27 @@
                         <div class="row">
                             <div class="col-md-3 mb-3">
                                 <label for="itemId" class="form-label">Id</label>
-                                <input type="text" class="form-control" id="itemId" name="itemId" value="${item.getItemId()}">
+                                <input type="text" class="form-control" id="itemId" name="itemId" value="${initialId}">
                             </div>
                             <div class="col-md-9 mb-3">
                                 <label for="itemName" class="form-label">Nombre del producto</label>
                                 <input type="text" class="form-control" id="itemName" name="itemName" value="${item.getItemName()}">
                             </div>
-                            <div class="col-6 mb-3">
-                                <label for="itemType" class="form-label">Tipo de producto</label>
+                            <div class="col-5 mb-3">
+                                <label for="itemType" class="form-label">Categoria</label>
                                 <input type="text" class="form-control" id="itemType" name="itemType">
                             </div>
-                            <div class="col-6 mb-3">
-                                <label for="itemSize" class="form-label">Medida del producto</label>
+                            <div class="col-3 mb-3">
+                                <label for="itemSize" class="form-label">Cantidad</label>
                                 <input type="text" class="form-control" id="itemSize" name="itemSize">
+                            </div>
+                            <div class="col-2 mb-3">
+                                <label for="itemUnit" class="form-label">Unidades</label>
+                                <input type="text" class="form-control" id="itemUnit" name="itemUnit">
+                            </div>
+                            <div class="col-2 mb-3">
+                                <label for="itemPrice" class="form-label">Precio</label>
+                                <input type="text" class="form-control" id="itemPrice" name="itemPrice">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="itemAcquisition" class="form-label">Fecha de adquisición</label>

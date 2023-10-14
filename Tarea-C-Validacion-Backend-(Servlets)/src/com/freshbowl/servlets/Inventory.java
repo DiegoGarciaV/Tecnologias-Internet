@@ -1,6 +1,7 @@
 package com.freshbowl.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.freshbowl.model.dao.InventoryDao;
 import com.freshbowl.model.pojos.InventoryItem;
+import com.freshbowl.model.pojos.output.InventoryOut;
 
 public class Inventory extends HttpServlet  {
     private static final long serialVersionUID = 1L;
@@ -22,26 +24,17 @@ public class Inventory extends HttpServlet  {
         
         InventoryDao inventoryDao = new InventoryDao();
         List<InventoryItem> inventoryItems = inventoryDao.getAll();
-        request.setAttribute("inventory", inventoryItems);
+        List<InventoryOut> inventoryItemsOut = new ArrayList<>();
+
+        for(InventoryItem item : inventoryItems)    
+        {
+            InventoryOut itemOut = (InventoryOut)item;
+            inventoryItemsOut.add(itemOut);
+        }
+        request.setAttribute("inventory", inventoryItemsOut);
         try {
             
         request.getRequestDispatcher("views/forms/inventory/index.jsp").forward(request, response);
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-        }
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-
-        InventoryDao inventoryDao = new InventoryDao();
-        InventoryItem inventoryItem = inventoryDao.get(1);
-        request.setAttribute("item", inventoryItem);
-        try {
-            
-        request.getRequestDispatcher("views/forms/inventory/crud-form.jsp").forward(request, response);
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }

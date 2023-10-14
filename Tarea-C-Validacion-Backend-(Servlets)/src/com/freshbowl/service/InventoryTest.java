@@ -12,30 +12,11 @@ public class InventoryTest {
         InventoryDao inventoryDao = new InventoryDao();
         String response;
 
-        InventoryItem inventoryItem = new InventoryItem(0, "Jitomate",60, 14.90);
+        InventoryItem inventoryItem = new InventoryItem(0, "Jitomate",1,60,14.50,7,"imgs/ingredients/tomato.png","2023-10-10","2023-10-20","Jitomate de bola","Jitomate de bola perfeto para rebanar","American Vegies");
         response = inventoryDao.create(inventoryItem).getMessage();
         System.out.println(response);
 
-        inventoryItem = new InventoryItem(0, "Tomate",30, 9.90);
-        response = inventoryDao.create(inventoryItem).getMessage();
-        System.out.println(response);
-
-        inventoryItem = new InventoryItem(0, "Mango",20, 35.50);
-        response = inventoryDao.create(inventoryItem).getMessage();
-        System.out.println(response);
-
-        inventoryItem = new InventoryItem(0, "Queso de cabra",2, 450.00);
-        response = inventoryDao.create(inventoryItem).getMessage();
-        System.out.println(response);
-
-        inventoryItem = new InventoryItem(0, "Pollo",5, 198.0);
-        response = inventoryDao.create(inventoryItem).getMessage();
-        System.out.println(response);
-
-        inventoryItem = new InventoryItem(0, "Pollo",5, 198.0);
-        response = inventoryDao.create(inventoryItem).getMessage();
-        System.out.println(response);
-
+        
         int lastId = 0;
         List<InventoryItem> inventoryItems = inventoryDao.getAll();
         for(InventoryItem inventoryItem2 : inventoryItems)
@@ -69,7 +50,7 @@ public class InventoryTest {
             .append("\n");
             System.out.println(inventoryItemString);
 
-            InventoryItem inventoryItem2p = new InventoryItem(inventoryItem2.getItemId(), "Tomate", inventoryItem2.getQuantity()+10, 17.95);
+            InventoryItem inventoryItem2p = new InventoryItem(inventoryItem2.getItemId(), "Jitomate",1,70,19.50,7,"imgs/ingredients/tomato.png","2023-10-10","2023-10-20","Jitomate de bola","Jitomate de bola perfeto para rebanar","American Vegies");
             response = inventoryDao.update(inventoryItem2p).getMessage();
             System.out.println(response);
 

@@ -25,13 +25,27 @@ public class UsersMapper implements IMapper<User>{
     @Override
     public Object[] demap(User entity) {
         
-        return new Object[]{entity.getName(), entity.getLastname(), entity.getJob(),entity.getUserId()};
+        return new Object[]{entity.getName(), entity.getLastname(), entity.getJob()};
     }
 
     @Override
     public Object[] outputDemap(User entity) {
        
-        return new Object[]{entity.getName(), entity.getLastname(), entity.getJob()};
+        UserOut entityOut = (UserOut)entity;
+        return new Object[]{entityOut.getName(), entityOut.getLastname(), entityOut.getJob(), entityOut.getJobName() };
+    }
+
+    @Override
+    public Object[] demapKey(User entity) {
+
+        return new Object[]{entity.getName(), entity.getLastname(), entity.getJob(),entity.getUserId()};
+    }
+
+    @Override
+    public Object[] outputDemapKey(User entity) {
+
+        UserOut entityOut = (UserOut)entity;
+        return new Object[]{entityOut.getName(), entityOut.getLastname(), entityOut.getJob(), entityOut.getJobName(), entityOut.getUserId()};
     }
     
 }
