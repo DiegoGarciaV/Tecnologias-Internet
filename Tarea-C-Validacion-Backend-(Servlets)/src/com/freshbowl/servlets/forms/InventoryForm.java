@@ -2,13 +2,13 @@ package com.freshbowl.servlets.forms;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.freshbowl.model.dao.DaoResult;
 import com.freshbowl.model.dao.InventoryDao;
 import com.freshbowl.model.pojos.InventoryItem;
 
@@ -16,9 +16,10 @@ public class InventoryForm extends HttpServlet  {
     private static final long serialVersionUID = 1L;
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
         InventoryDao inventoryDao = new InventoryDao();
         List<InventoryItem> inventoryItems = inventoryDao.getAll();
         InventoryItem inventoryItem = null;
@@ -39,10 +40,10 @@ public class InventoryForm extends HttpServlet  {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
         String itemId = request.getParameter("itemId");
         String itemType = request.getParameter("itemType");
         String itemName = request.getParameter("itemName");
@@ -65,20 +66,37 @@ public class InventoryForm extends HttpServlet  {
             InventoryDao inventoryDao = new InventoryDao();
             InventoryItem previusInventoryItem = inventoryDao.get(inventoryItem.getItemId());
             if(previusInventoryItem != null)
-                inventoryDao.update(inventoryItem);
+            {
+                DaoResult<InventoryItem> result = inventoryDao.update(inventoryItem);
+                if(result.getOperatedRecords() > 0)
+                    request.setAttribute("success-message","Se ha actualizado exitosamente el articulo '" + previusInventoryItem.getItemName() + "'");
+                else
+                {
+                    inventoryValidator.getErrorsMesages().put("Error al actualizar datos: ", result.getMessage());
+                    request.setAttribute("errors", inventoryValidator.getErrorsMesages());
+                }
+            }
             else
-                inventoryDao.create(inventoryItem);
+            {
+                DaoResult<InventoryItem> result = inventoryDao.create(inventoryItem);
+                if(result.getOperatedRecords() > 0)
+                    request.setAttribute("success-message","Se ha agregado exitosamente el articulo '" + itemName + "'");
+                else
+                {
+                    inventoryValidator.getErrorsMesages().put("Error al insertar datos: ", result.getMessage());
+                    request.setAttribute("errors", inventoryValidator.getErrorsMesages());  
+                }
                 
+            }     
         }
         else
         {
             request.setAttribute("errors", inventoryValidator.getErrorsMesages());
+            request.setAttribute("item", inventoryItem);
         }
+
         request.setAttribute("initialId", 0);
-        for(Map.Entry<String,String> tuple : inventoryValidator.getErrorsMesages().entrySet())
-        {
-            System.err.println(tuple.getKey() + ": " + tuple.getValue());
-        }
+        
         try {
             
         request.getRequestDispatcher("../views/forms/inventory/crud-form.jsp").forward(request, response);

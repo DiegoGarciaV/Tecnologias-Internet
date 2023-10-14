@@ -194,6 +194,22 @@ body
     font-family: 'Montserrat', sans-serif;
 }
 
+.error-msg
+{
+    background-color: rgba(192, 133, 133, 0.5);
+    color: rgb(207, 13, 13);
+    border-radius: 10px;
+    border: solid 3px rgb(207, 13, 13);
+}
+
+.success-message
+{
+    background-color: rgba(133, 192, 158, 0.5);
+    color: rgb(0, 145, 65);
+    border-radius: 10px;
+    border: solid 3px rgb(0, 145, 65);
+}
+
 @media (max-width: 1390px) {
 
     .exclusive-item-card

@@ -1,5 +1,7 @@
 package com.freshbowl.servlets.forms;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -60,7 +62,7 @@ public class InventoryValidator {
         if(itemIdFormat == -1)
         {
             itemIdFormat = 0;
-            errorsMesages.put("itemId", "No valid format");
+            errorsMesages.put("Id del articulo", "No ha ingresado un Id numerico.");
         }
         
         return itemIdFormat;
@@ -72,7 +74,7 @@ public class InventoryValidator {
         if(itemQuantity == -1)
         {
             itemQuantity = 0;
-            errorsMesages.put("itemQuantity", "No valid format");
+            errorsMesages.put("Cantidad en stock", "No ha ingresado un valor numerico.");
         }
         
         return itemQuantity;
@@ -84,7 +86,7 @@ public class InventoryValidator {
         if(itemPrice == -1)
         {
             itemPrice = 0;
-            errorsMesages.put("itemPrice", "No valid format");
+            errorsMesages.put("Precio del articulo", "No ha ingresado un valor numerico.");
         }
         
         return itemPrice;
@@ -98,7 +100,7 @@ public class InventoryValidator {
             if(tuple.get("item").equals(unit))
                 return numericValidator(tuple.get("idItem"));
         }
-        errorsMesages.put("itemUnit", "Non valid ItemUnit");
+        errorsMesages.put("Unidad de medida", "No ha ingresado unidad de medida valida.");
         return -1;
 
         
@@ -108,7 +110,7 @@ public class InventoryValidator {
     {
         if(provider.isEmpty())
         {
-            errorsMesages.put("itemSupplier", "Empty supplier");
+            errorsMesages.put("Provedor", "No se ha informado proveedor.");
             return false;
         }
 
@@ -123,8 +125,30 @@ public class InventoryValidator {
             if(tuple.get("item").equals(itemType))
                 return numericValidator(tuple.get("idItem"));
         }
-        errorsMesages.put("itemType", "Non valid ItemType");
+        errorsMesages.put("Tipo de articulo", "No ha ingresado un tipo de articulo valido.");
         return -1;
+    }
+
+    public String validateExpiryDate()
+    {
+        if(expiryDate.isEmpty())
+            return null;
+
+        DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        try {
+            LocalDate aqDate = LocalDate.parse(acquisitionDate, formatoFecha);
+            LocalDate exDate = LocalDate.parse(expiryDate, formatoFecha);
+
+            if(!exDate.isAfter(aqDate))
+            {
+                errorsMesages.put("Fecha de caducidad", "Se ingreso una fecha de caducidad anterior a la fecha de adquisicion.");
+            }
+        } catch (Exception e) {
+            errorsMesages.put("Formato de fecha incorrecto", "Se ha recibido una fecha en un formato distinto al esperado (YYYY-MM-DD).");
+        }
+        
+        return expiryDate;
     }
 
     public InventoryItem validateForm()
@@ -135,10 +159,10 @@ public class InventoryValidator {
         validatePrice();
         validateUnit();
         validateItemSupplier();
-
+        validateExpiryDate();
         if(errorsMesages.isEmpty())
         {
-            return new InventoryItem(validateItemId(), itemName, validateType(), validateQuantity(), validatePrice(), validateUnit(), img, acquisitionDate, expiryDate, description, comments, provider);
+            return new InventoryItem(validateItemId(), itemName, validateType(), validateQuantity(), validatePrice(), validateUnit(), img, acquisitionDate, validateExpiryDate(), description, comments, provider);
 
         }
         return null;
