@@ -82,6 +82,10 @@
                             <p class="card-text">
                                 Precio actual: <span class="pricing-buttons">$ <%= item.getPrice() %> / <%= item.getUnitName() %></span>
                             </p>
+
+                            <p class="card-text">
+                                Fecha de adquisición: <span class="pricing-buttons"><%= item.getAcquisitionDate() %></span>
+                            </p>
                             
                         </div>
                         <div class="card-body card-pricing">

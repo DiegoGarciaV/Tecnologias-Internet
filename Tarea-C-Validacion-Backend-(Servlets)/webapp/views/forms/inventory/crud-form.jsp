@@ -60,27 +60,19 @@
                     <div class="container error-msg px-4 py-3">
                         <h3>Se han proporcionado datos incorrectos</h3>
                     <%
-
                         for(Map.Entry<String,String> tuple : errors.entrySet())
                         {
                             String param = tuple.getKey();
                             String message = tuple.getValue();
-
                             %>
-                            
                             <p><%= param %>: <%= message %></p>
-                            
                             <%
                         }
-
                     %>
                     </div>
                     <%
                     }
-                    
-                    
                 %>
-
                 <%
                     String success = (String)request.getAttribute("success-message");
                     if(success!= null && !success.isEmpty())
@@ -105,43 +97,43 @@
                             </div>
                             <div class="col-md-9 mb-3">
                                 <label for="itemName" class="form-label">Nombre del producto</label>
-                                <input type="text" class="form-control" id="itemName" name="itemName" value="${item.getItemName()}">
+                                <input type="text" class="form-control" id="itemName" name="itemName" value='${item.get("itemName")}'>
                             </div>
                             <div class="col-5 mb-3">
                                 <label for="itemType" class="form-label">Categoria</label>
-                                <input type="text" class="form-control" id="itemType" name="itemType" value="${item.getItemTypeName()}">
+                                <input type="text" class="form-control" id="itemType" name="itemType" value='${item.get("itemType")}'>
                             </div>
                             <div class="col-3 mb-3">
                                 <label for="itemSize" class="form-label">Cantidad</label>
-                                <input type="text" class="form-control" id="itemSize" name="itemSize" value="${item.getQuantity()}">
+                                <input type="text" class="form-control" id="itemSize" name="itemSize" value='${item.get("itemSize")}'>
                             </div>
                             <div class="col-2 mb-3">
                                 <label for="itemUnit" class="form-label">Unidades</label>
-                                <input type="text" class="form-control" id="itemUnit" name="itemUnit" value="${item.getUnitName()}">
+                                <input type="text" class="form-control" id="itemUnit" name="itemUnit" value='${item.get("itemUnit")}'>
                             </div>
                             <div class="col-2 mb-3">
                                 <label for="itemPrice" class="form-label">Precio</label>
-                                <input type="text" class="form-control" id="itemPrice" name="itemPrice" value="${item.getPrice()}">
+                                <input type="text" class="form-control" id="itemPrice" name="itemPrice" value='${item.get("itemPrice")}'>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="itemAcquisition" class="form-label">Fecha de adquisición</label>
-                                <input type="date" class="form-control" id="itemAcquisition" name="itemAcquisition" value="${item.getAcquisitionDate()}">
+                                <input type="date" class="form-control" id="itemAcquisition" name="itemAcquisition" value='${item.get("itemAcquisition")}'>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="itemExpiry" class="form-label">Fecha de caducidad</label>
-                                <input type="date" class="form-control" id="itemExpiry" name="itemExpiry" value="${item.getExpiryDate()}">
+                                <input type="date" class="form-control" id="itemExpiry" name="itemExpiry" value='${item.get("itemExpiry")}'>
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label for="itemDesc" class="form-label">Descripcion</label>
-                                <input type="text" class="form-control" id="itemDesc" name="itemDesc" value="${item.getDescription()}">
+                                <input type="text" class="form-control" id="itemDesc" name="itemDesc" value='${item.get("itemDesc")}'>
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label for="itemComments" class="form-label">Comentarios</label>
-                                <input type="text" class="form-control" id="itemComments" name="itemComments" value="${item.getComments()}">
+                                <input type="text" class="form-control" id="itemComments" name="itemComments" value='${item.get("itemComments")}'>
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label for="itemSupplier" class="form-label">Provedor</label>
-                                <input type="text" class="form-control" id="itemSupplier" name="itemSupplier" value="${item.getProvider()}">
+                                <input type="text" class="form-control" id="itemSupplier" name="itemSupplier" value='${item.get("itemSupplier")}'>
                             </div>
 
                             <div class="form-group">
